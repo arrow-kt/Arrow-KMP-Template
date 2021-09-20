@@ -4,8 +4,8 @@ plugins {
   id("org.jlleitschuh.gradle.ktlint") version "10.2.0" apply true
 }
 
-group = groupId
-version = versionName
+group "org.example"
+version "1.0"
 
 repositories {
   mavenCentral()
@@ -25,17 +25,16 @@ kotlin {
     commonMain {
       dependencies {
         implementation(kotlin("stdlib-common"))
-        implementation(Arrow.core)
-        implementation(Arrow.fxCoroutines)
-        implementation(Arrow.optics)
-        implementation(KotlinX.coroutinesCore)
+        implementation("io.arrow-kt:arrow-core:1.0.0")
+        implementation("io.arrow-kt:arrow-core:1.0.0")
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
       }
     }
     commonTest {
       dependencies {
-        implementation(Kotest.property)
-        implementation(Kotest.frameworkEngine)
-        implementation(Kotest.assertionsCore)
+        implementation("io.kotest:kotest-property:5.0.0.M1")
+        implementation("io.kotest:kotest-framework-engine:5.0.0.M1")
+        implementation("io.kotest:kotest-assertions-core:5.0.0.M1")
       }
     }
   }
