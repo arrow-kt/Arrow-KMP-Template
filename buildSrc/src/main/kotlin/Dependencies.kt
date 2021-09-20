@@ -4,14 +4,14 @@ object Arrow {
   val core: String = arrow("core")
 }
 
-fun arrow(simpleModuleName: String, version: String = Versions.arrow): String =
+fun arrow(simpleModuleName: String, version: String = "1.0.0"): String =
   "io.arrow-kt:arrow-$simpleModuleName:$version"
 
 object KotlinX {
  val coroutinesCore: String = kotlinX("coroutines-core")
 }
 
-fun kotlinX(simpleModuleName: String, version: String = Versions.kotlinX): String =
+fun kotlinX(simpleModuleName: String, version: String = "1.5.2"): String =
   "org.jetbrains.kotlinx:kotlinx-$simpleModuleName:$version"
 
 object Kotest {
@@ -20,5 +20,5 @@ object Kotest {
   val assertionsCore: String = kotest("assertions-core")
 }
 
-fun kotest(simpleModuleName: String, version: String = Versions.kotest): String =
+fun kotest(simpleModuleName: String, version: String = "5.0.0.M1"): String =
   "io.kotest:kotest-$simpleModuleName:$version"

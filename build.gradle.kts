@@ -1,7 +1,7 @@
 plugins {
-  kotlin("multiplatform") version Versions.Plugin.kotlin apply true
-  id("io.kotest.multiplatform") version Versions.Plugin.kotest apply true
-  id("org.jlleitschuh.gradle.ktlint") version Versions.Plugin.ktlint apply true
+  kotlin("multiplatform") version "1.5.30" apply true
+  id("io.kotest.multiplatform") version "5.0.0.5" apply true
+  id("org.jlleitschuh.gradle.ktlint") version "10.2.0" apply true
 }
 
 group = groupId
@@ -20,8 +20,6 @@ kotlin {
   }
 
   linuxX64()
-
-  mingwX64()
 
   sourceSets {
     commonMain {
