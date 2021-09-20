@@ -1,64 +1,42 @@
 plugins {
   kotlin("multiplatform") version "1.5.30"
+  id("io.kotest.multiplatform") version "5.0.0.5"
 }
 
+apply(plugin = "io.kotest.multiplatform")
+
 group "org.example"
-version "1.0-SNAPSHOT"
+version "1.0"
 
 repositories {
   mavenCentral()
-  maven("https://oss.sonatype.org/content/repositories/snapshots/")
-}
-
-configurations.all { resolutionStrategy.cacheChangingModulesFor(0, "seconds") }
-
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
-  kotlinOptions {
-    useIR = true
-  }
 }
 
 kotlin {
-//    jvm()
+  jvm()
 
-//  js(IR) {
-//    browser()
-//    nodejs()
-//  }
+  js(IR) {
+    browser()
+    nodejs()
+  }
 
-  macosX64()
+  linuxX64()
+
   sourceSets {
     commonMain {
       dependencies {
         implementation(kotlin("stdlib-common"))
-        // Should be able to resolve to io.arrow-kt:arrow-core-macosx641.0.0-SNAPSHOT
-        // with all its transitive dependencies
-        implementation("io.arrow-kt:arrow-core:1.0.0-SNAPSHOT")
+        implementation("io.arrow-kt:arrow-core:1.0.0")
+        implementation("io.arrow-kt:arrow-core:1.0.0")
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
       }
     }
     commonTest {
       dependencies {
-        implementation(kotlin("test"))
-        implementation(kotlin("test-annotations-common"))
+        implementation("io.kotest:kotest-property:5.0.0.M1")
+        implementation("io.kotest:kotest-framework-engine:5.0.0.M1")
+        implementation("io.kotest:kotest-assertions-core:5.0.0.M1")
       }
     }
-    named("macosX64Main") {
-      dependencies {
-//  Manually defining all transitive dependencies works, but is incorrect
-//  The POM should know which are the correct transitive dependencies.
-
-//        implementation("io.arrow-kt:arrow-continuations-macosx64:1.0.0-SNAPSHOT")
-//        implementation("io.arrow-kt:arrow-annotations-macosx64:1.0.0-SNAPSHOT")
-
-        // If we manually define target dependency here, then it can find this one
-        // But still not the transitive ones
-//        implementation("io.arrow-kt:arrow-core-macosx64:1.0.0-SNAPSHOT")
-      }
-    }
-//        jvmTest {
-//            dependencies {
-//                implementation(kotlin("test-junit"))
-//            }
-//        }
   }
 }
