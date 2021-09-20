@@ -17,8 +17,12 @@ typealias NastyLettuce = CookingException.LettuceIsRotten
 typealias KnifeIsDull = CookingException.KnifeNeedsSharpening
 typealias InsufficientAmountOfLettuce = CookingException.InsufficientAmount
 
-fun takeFoodFromRefrigerator(): Either<NastyLettuce, Lettuce> = Right(Lettuce)
-fun getKnife(): Either<KnifeIsDull, Knife> = Right(Knife)
+fun takeFoodFromRefrigerator(): Either<NastyLettuce, Lettuce> =
+  Right(Lettuce)
+
+fun getKnife(): Either<KnifeIsDull, Knife> =
+  Right(Knife)
+
 fun prepare(tool: Knife, ingredient: Lettuce): Either<InsufficientAmountOfLettuce, Salad> =
   Left(InsufficientAmountOfLettuce(5))
 

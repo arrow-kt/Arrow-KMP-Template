@@ -1,12 +1,11 @@
 plugins {
-  kotlin("multiplatform") version "1.5.30"
-  id("io.kotest.multiplatform") version "5.0.0.5"
+  kotlin("multiplatform") version Versions.Plugin.kotlin apply true
+  id("io.kotest.multiplatform") version Versions.Plugin.kotest apply true
+  id("org.jlleitschuh.gradle.ktlint") version Versions.Plugin.ktlint apply true
 }
 
-apply(plugin = "io.kotest.multiplatform")
-
-group "org.example"
-version "1.0"
+group = groupId
+version = versionName
 
 repositories {
   mavenCentral()
@@ -24,36 +23,21 @@ kotlin {
 
   mingwX64()
 
-  macosX64()
-  macosArm64()
-
-  tvos()
-  tvosSimulatorArm64()
-
-  watchosArm32()
-  watchosX86()
-  watchosX64()
-  watchosSimulatorArm64()
-
-  iosX64()
-  iosArm64()
-  iosArm32()
-  iosSimulatorArm64()
-
   sourceSets {
     commonMain {
       dependencies {
         implementation(kotlin("stdlib-common"))
-        implementation("io.arrow-kt:arrow-core:1.0.0")
-        implementation("io.arrow-kt:arrow-core:1.0.0")
-        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
+        implementation(Arrow.core)
+        implementation(Arrow.fxCoroutines)
+        implementation(Arrow.optics)
+        implementation(KotlinX.coroutinesCore)
       }
     }
     commonTest {
       dependencies {
-        implementation("io.kotest:kotest-property:5.0.0.M1")
-        implementation("io.kotest:kotest-framework-engine:5.0.0.M1")
-        implementation("io.kotest:kotest-assertions-core:5.0.0.M1")
+        implementation(Kotest.property)
+        implementation(Kotest.frameworkEngine)
+        implementation(Kotest.assertionsCore)
       }
     }
   }
