@@ -3,7 +3,6 @@ name: "Build"
 on: pull_request
 
 env:
-  BASEDIR: ${{github.workspace}}/arrow-libs
   JAVA_OPTS: -Xms1g -Xmx3g
   GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.configureondemand=true -Dorg.gradle.jvmargs=-Xmx3g -XX:MaxPermSize=2048m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8"
 
@@ -36,7 +35,6 @@ jobs:
           echo "JAVA_HOME=$JAVA_HOME_8_X64" >> $GITHUB_ENV
 
       - name: "Run KtLint"
-        working-directory: arrow-libs
         run: ./gradlew ktlintCheck
 
   linux_jvm_and_js:
@@ -67,7 +65,7 @@ jobs:
         if: ${{ always() }}
         run: |
           mkdir test-reports
-          for report in `ls -d arrow-libs/**/**/build/reports/tests`; do
+          for report in `ls -d build/reports/tests`; do
             module=$(echo $report | cut -d/ -f3)
             cp -r $report test-reports/$module
           done
@@ -105,7 +103,7 @@ jobs:
         if: ${{ always() }}
         run: |
           mkdir test-reports
-          for report in `ls -d /**/build/reports/tests`; do
+          for report in `ls -d build/reports/tests`; do
             module=$(echo $report | cut -d/ -f3)
             cp -r $report test-reports/$module
           done
@@ -143,7 +141,7 @@ jobs:
         if: ${{ always() }}
         run: |
           mkdir test-reports
-          for report in `ls -d /**/**/build/reports/tests`; do
+          for report in `ls -d build/reports/tests`; do
             module=$(echo $report | cut -d/ -f3)
             cp -r $report test-reports/$module
           done
