@@ -1,36 +1,42 @@
 plugins {
-    kotlin("multiplatform") version "1.5.21"
+  kotlin("multiplatform") version "1.5.30"
+  id("io.kotest.multiplatform") version "5.0.0.5"
 }
 
+apply(plugin = "io.kotest.multiplatform")
+
 group "org.example"
-version "1.0-SNAPSHOT"
+version "1.0"
 
 repositories {
-    mavenCentral()
-    maven("https://oss.sonatype.org/content/repositories/snapshots/")
+  mavenCentral()
 }
 
 kotlin {
-    /* Targets configuration omitted.
-     *  To find out how to configure the targets, please follow the link:
-     *  https://kotlinlang.org/docs/reference/building-mpp-with-gradle.html#setting-up-targets
-     */
+  jvm()
 
-    sourceSets {
-        commonMain {
-            dependencies {
-                implementation(kotlin("stdlib-common"))
-                implementation("io.arrow-kt:arrow-core:1.0.0-SNAPSHOT")
-                implementation("io.arrow-kt:arrow-optics:1.0.0-SNAPSHOT")
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1")
-                implementation("io.arrow-kt:arrow-fx-coroutines:1.0.0-SNAPSHOT")
-            }
-        }
-        commonTest {
-            dependencies {
-                implementation(kotlin("test-common"))
-                implementation(kotlin("test-annotations-common"))
-            }
-        }
+  js(IR) {
+    browser()
+    nodejs()
+  }
+
+  linuxX64()
+
+  sourceSets {
+    commonMain {
+      dependencies {
+        implementation(kotlin("stdlib-common"))
+        implementation("io.arrow-kt:arrow-core:1.0.0")
+        implementation("io.arrow-kt:arrow-core:1.0.0")
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
+      }
     }
+    commonTest {
+      dependencies {
+        implementation("io.kotest:kotest-property:5.0.0.M1")
+        implementation("io.kotest:kotest-framework-engine:5.0.0.M1")
+        implementation("io.kotest:kotest-assertions-core:5.0.0.M1")
+      }
+    }
+  }
 }
