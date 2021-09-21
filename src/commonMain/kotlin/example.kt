@@ -1,3 +1,5 @@
+@file:Suppress("RedundantSuspendModifier")
+
 import arrow.core.Either
 import arrow.core.Either.Left
 import arrow.core.Either.Right
@@ -17,8 +19,12 @@ typealias NastyLettuce = CookingException.LettuceIsRotten
 typealias KnifeIsDull = CookingException.KnifeNeedsSharpening
 typealias InsufficientAmountOfLettuce = CookingException.InsufficientAmount
 
-fun takeFoodFromRefrigerator(): Either<NastyLettuce, Lettuce> = Right(Lettuce)
-fun getKnife(): Either<KnifeIsDull, Knife> = Right(Knife)
+fun takeFoodFromRefrigerator(): Either<NastyLettuce, Lettuce> =
+  Right(Lettuce)
+
+suspend fun getKnife(): Either<KnifeIsDull, Knife> =
+  Right(Knife)
+
 fun prepare(tool: Knife, ingredient: Lettuce): Either<InsufficientAmountOfLettuce, Salad> =
   Left(InsufficientAmountOfLettuce(5))
 

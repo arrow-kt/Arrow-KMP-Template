@@ -1,9 +1,7 @@
 plugins {
-  kotlin("multiplatform") version "1.5.30"
-  id("io.kotest.multiplatform") version "5.0.0.5"
+  kotlin("multiplatform") version "1.5.30" apply true
+  id("io.kotest.multiplatform") version "5.0.0.5" apply true
 }
-
-apply(plugin = "io.kotest.multiplatform")
 
 group "org.example"
 version "1.0"
@@ -22,12 +20,15 @@ kotlin {
 
   linuxX64()
 
+  mingwX64()
+
   sourceSets {
     commonMain {
       dependencies {
         implementation(kotlin("stdlib-common"))
         implementation("io.arrow-kt:arrow-core:1.0.0")
-        implementation("io.arrow-kt:arrow-core:1.0.0")
+        implementation("io.arrow-kt:arrow-optics:1.0.0")
+        implementation("io.arrow-kt:arrow-fx-coroutines:1.0.0")
         implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
       }
     }
