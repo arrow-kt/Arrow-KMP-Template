@@ -7,35 +7,6 @@ env:
   GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.configureondemand=true -Dorg.gradle.jvmargs=-Xmx3g -XX:MaxPermSize=2048m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8"
 
 jobs:
-  ktlint:
-    runs-on: ubuntu-latest
-    timeout-minutes: 60
-
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-
-      - name: Restore Gradle cache
-        id: cache
-        uses: actions/cache@v2.1.6
-        with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-            ~/.gradle/yarn
-            ~/.gradle/nodejs
-            ~/.konan
-          key: misc-step-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-          restore-keys: |
-            misc-step-gradle-
-      - name: "Set env"
-        run: |
-          echo "$JAVA_HOME_8_X64/bin" >> $GITHUB_PATH
-          echo "JAVA_HOME=$JAVA_HOME_8_X64" >> $GITHUB_ENV
-
-      - name: "Run KtLint"
-        run: ./gradlew ktlintCheck
 
   linux_jvm_and_js:
     runs-on: ubuntu-latest
