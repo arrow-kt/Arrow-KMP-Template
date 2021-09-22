@@ -14,21 +14,30 @@ repositories {
 
 kotlin {
   jvm()
-
   js(IR) {
     browser()
     nodejs()
   }
-
   linuxX64()
+  mingwX64()
+  macosX64()
+  macosArm64()
+  tvos()
+  tvosSimulatorArm64()
+  watchosArm32()
+  watchosX86()
+  watchosX64()
+  watchosSimulatorArm64()
+  iosX64()
+  iosArm64()
+  iosArm32()
+  iosSimulatorArm64()
 
   sourceSets {
     commonMain {
       dependencies {
         implementation(kotlin("stdlib-common"))
-        implementation("io.arrow-kt:arrow-core:1.0.0")
-        implementation("io.arrow-kt:arrow-core:1.0.0")
-        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
+        implementation("io.github.nomisrev:saga:0.0.1000")
       }
     }
     commonTest {
