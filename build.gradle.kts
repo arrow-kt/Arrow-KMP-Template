@@ -1,9 +1,7 @@
 plugins {
-  kotlin("multiplatform") version "1.5.30"
-  id("io.kotest.multiplatform") version "5.0.0.5"
+  kotlin("multiplatform") version "1.5.31" apply true
+  id("io.kotest.multiplatform") version "5.0.0.5" apply true
 }
-
-apply(plugin = "io.kotest.multiplatform")
 
 group "org.example"
 version "1.0"
