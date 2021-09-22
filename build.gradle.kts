@@ -36,6 +36,7 @@ kotlin {
       dependencies {
         implementation(kotlin("stdlib-common"))
         implementation("io.github.nomisrev:saga:0.0.1000")
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
       }
     }
     commonTest {
