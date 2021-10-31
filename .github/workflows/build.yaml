@@ -28,9 +28,9 @@ jobs:
           key: linux-step-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
           restore-keys: |
             linux-step-gradle-
-      - name: Build
 
-        run: ./gradlew linuxX64Test jvmTest jsTest
+      - name: Build
+        run: ./gradlew build
 
       - name: "Prepare test reports"
         if: ${{ always() }}
@@ -40,6 +40,7 @@ jobs:
             module=$(echo $report | cut -d/ -f3)
             cp -r $report test-reports/$module
           done
+
       - name: "Make test reports available to download"
         if: ${{ always() }}
         uses: actions/upload-artifact@v2
@@ -67,5 +68,6 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
+
       - name: Build
-        run: ./gradlew mingwX64Test
+        run: ./gradlew build
