@@ -1,6 +1,5 @@
 plugins {
   kotlin("multiplatform") version "1.6.0" apply true
-  id("io.kotest.multiplatform") version "5.0.0.6" apply true
 }
 
 group "org.example"
@@ -13,11 +12,10 @@ repositories {
 
 buildscript {
   repositories {
-    mavenLocal()
     maven(url = "https://oss.sonatype.org/content/repositories/snapshots/")
   }
   dependencies {
-    classpath("io.arrow-kt.optics:io.arrow-kt.optics.gradle.plugin:2.1-SNAPSHOT")
+    classpath("io.arrow-kt.optics:io.arrow-kt.optics.gradle.plugin:2.0-SNAPSHOT")
   }
 }
 
@@ -39,14 +37,6 @@ kotlin {
     commonMain {
       dependencies {
         implementation(kotlin("stdlib-common"))
-        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0-RC")
-      }
-    }
-    commonTest {
-      dependencies {
-        implementation("io.kotest:kotest-property:5.0.0")
-        implementation("io.kotest:kotest-framework-engine:5.0.0")
-        implementation("io.kotest:kotest-assertions-core:5.0.0")
       }
     }
   }

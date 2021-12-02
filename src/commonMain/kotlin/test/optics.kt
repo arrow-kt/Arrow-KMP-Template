@@ -1,3 +1,5 @@
+package test
+
 import arrow.optics.optics
 
 @optics
