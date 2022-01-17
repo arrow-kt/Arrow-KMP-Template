@@ -9,4 +9,4 @@ It sets up all Arrow MPP dependencies:
  - Arrow Fx
  - Arrow Optics
 
-And it sets up [Kotest 5.0.0.M1](https://kotest.io/) for allowing testing of all targets.
+And it sets up [Kotest](https://kotest.io/) for allowing testing of all targets.
