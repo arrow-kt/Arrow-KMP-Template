@@ -22,6 +22,21 @@ kotlin {
 
   mingwX64()
 
+  iosArm32()
+  iosArm64()
+  iosSimulatorArm64()
+  iosX64()
+  macosArm64()
+  macosX64()
+  tvosArm64()
+  tvosSimulatorArm64()
+  tvosX64()
+  watchosArm32()
+  watchosArm64()
+  watchosSimulatorArm64()
+  watchosX64()
+  watchosX86()
+
   sourceSets {
     commonMain {
       dependencies {
