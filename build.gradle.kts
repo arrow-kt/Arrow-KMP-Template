@@ -52,6 +52,7 @@ kotlin {
         implementation("io.kotest:kotest-property:5.1.0")
         implementation("io.kotest:kotest-framework-engine:5.1.0")
         implementation("io.kotest:kotest-assertions-core:5.1.0")
+        implementation("io.kotest.extensions:kotest-assertions-arrow:1.2.2")
       }
     }
   }
