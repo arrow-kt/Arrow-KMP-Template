@@ -56,9 +56,9 @@ kotlin {
         implementation("io.kotest:kotest-property:5.1.0")
         implementation("io.kotest:kotest-framework-engine:5.1.0")
         implementation("io.kotest:kotest-assertions-core:5.1.0")
-        implementation("io.kotest.extensions:kotest-assertions-arrow:1.1.0.98-SNAPSHOT")
-        implementation("io.kotest.extensions:kotest-property-arrow:1.1.0.98-SNAPSHOT") // optional
-        implementation("io.kotest.extensions:kotest-property-arrow-optics:1.1.0.98-SNAPSHOT") // optional
+        implementation("io.kotest.extensions:kotest-assertions-arrow:1.2.3")
+        implementation("io.kotest.extensions:kotest-property-arrow:1.2.3") // optional
+        implementation("io.kotest.extensions:kotest-property-arrow-optics:1.2.3") // optional
       }
     }
 
