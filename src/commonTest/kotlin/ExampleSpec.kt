@@ -29,7 +29,7 @@ class ExampleSpec : StringSpec({
 
   "kotest arrow extension use-cases" {
     // smart-cast abilities for arrow types
-    Either.Right("HI").shouldBeRight().shouldBeTypeOf<String>()
+    Either.Right("HI").shouldBeRight() shouldBe "HI"
 
     // utilise builtin or costume Laws with Generators to verify behavior
     testLaws(
