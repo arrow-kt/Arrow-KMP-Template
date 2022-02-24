@@ -8,6 +8,9 @@ version "1.0"
 
 repositories {
   mavenCentral()
+  maven {
+    url = uri("https://oss.sonatype.org/content/repositories/snapshots")
+  }
 }
 
 kotlin {
@@ -47,11 +50,21 @@ kotlin {
         implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0")
       }
     }
+
     commonTest {
       dependencies {
         implementation("io.kotest:kotest-property:5.1.0")
         implementation("io.kotest:kotest-framework-engine:5.1.0")
         implementation("io.kotest:kotest-assertions-core:5.1.0")
+        implementation("io.kotest.extensions:kotest-assertions-arrow:1.2.3")
+        implementation("io.kotest.extensions:kotest-property-arrow:1.2.3") // optional
+        implementation("io.kotest.extensions:kotest-property-arrow-optics:1.2.3") // optional
+      }
+    }
+
+    val jvmTest by getting {
+      dependencies {
+        implementation("io.kotest:kotest-runner-junit5-jvm:5.1.0")
       }
     }
   }
