@@ -1,6 +1,6 @@
 plugins {
   kotlin("multiplatform") version "1.6.10" apply true
-  id("io.kotest.multiplatform") version "5.1.0" apply true
+  id("io.kotest.multiplatform") version "5.2.1" apply true
 }
 
 group "org.example"
@@ -53,18 +53,18 @@ kotlin {
 
     commonTest {
       dependencies {
-        implementation("io.kotest:kotest-property:5.1.0")
-        implementation("io.kotest:kotest-framework-engine:5.1.0")
-        implementation("io.kotest:kotest-assertions-core:5.1.0")
-        implementation("io.kotest.extensions:kotest-assertions-arrow:1.2.3")
-        implementation("io.kotest.extensions:kotest-property-arrow:1.2.3") // optional
-        implementation("io.kotest.extensions:kotest-property-arrow-optics:1.2.3") // optional
+        implementation("io.kotest:kotest-property:5.2.2")
+        implementation("io.kotest:kotest-framework-engine:5.2.2")
+        implementation("io.kotest:kotest-assertions-core:5.2.2")
+        implementation("io.kotest.extensions:kotest-assertions-arrow:1.2.4")
+        implementation("io.kotest.extensions:kotest-property-arrow:1.2.4") // optional
+        implementation("io.kotest.extensions:kotest-property-arrow-optics:1.2.4") // optional
       }
     }
 
     val jvmTest by getting {
       dependencies {
-        implementation("io.kotest:kotest-runner-junit5-jvm:5.1.0")
+        implementation("io.kotest:kotest-runner-junit5-jvm:5.2.2")
       }
     }
   }
