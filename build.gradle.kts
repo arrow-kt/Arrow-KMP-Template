@@ -44,9 +44,9 @@ kotlin {
     commonMain {
       dependencies {
         implementation(kotlin("stdlib-common"))
-        implementation("io.arrow-kt:arrow-core:1.0.1")
-        implementation("io.arrow-kt:arrow-optics:1.0.1")
-        implementation("io.arrow-kt:arrow-fx-coroutines:1.0.1")
+        implementation("io.arrow-kt:arrow-core:1.1.0")
+        implementation("io.arrow-kt:arrow-optics:1.1.0")
+        implementation("io.arrow-kt:arrow-fx-coroutines:1.1.0")
         implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1")
       }
     }
