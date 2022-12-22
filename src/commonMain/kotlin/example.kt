@@ -4,6 +4,7 @@ import arrow.core.Either
 import arrow.core.Either.Left
 import arrow.core.Either.Right
 import arrow.core.continuations.either
+import arrow.optics.optics
 
 object Lettuce
 object Knife
@@ -35,3 +36,8 @@ suspend fun prepareLunch(): Either<CookingException, Salad> =
     val lunch = prepare(knife, lettuce).bind()
     lunch
   }
+
+@optics
+data class Ingredient(val name: String) {
+  companion object
+}

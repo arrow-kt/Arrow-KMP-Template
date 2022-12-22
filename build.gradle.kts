@@ -1,6 +1,7 @@
 plugins {
-  kotlin("multiplatform") version "1.6.21" apply true
-  id("io.kotest.multiplatform") version "5.3.0" apply true
+  kotlin("multiplatform") version "1.7.22" apply true
+  id("io.kotest.multiplatform") version "5.5.4" apply true
+  id("com.google.devtools.ksp") version "1.7.22-1.0.8"
 }
 
 group "org.example"
@@ -13,6 +14,12 @@ repositories {
   }
 }
 
+// release candidate avoids a null pointer exception during optics generation
+val arrowVersion = "1.1.4-rc.3"
+dependencies {
+  add("kspCommonMainMetadata", "io.arrow-kt:arrow-optics-ksp-plugin:$arrowVersion")
+}
+
 kotlin {
   jvm()
 
@@ -21,7 +28,7 @@ kotlin {
     nodejs()
   }
 
-  linuxX64()
+  // linuxX64()
 
   mingwX64()
 
@@ -43,22 +50,26 @@ kotlin {
   sourceSets {
     commonMain {
       dependencies {
+        kotlin.srcDir("build/generated/ksp/metadata/commonMain/kotlin")
         implementation(kotlin("stdlib-common"))
-        implementation("io.arrow-kt:arrow-core:1.1.3-alpha.39")
-        implementation("io.arrow-kt:arrow-optics:1.1.3-alpha.39")
-        implementation("io.arrow-kt:arrow-fx-coroutines:1.1.3-alpha.39")
-        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1")
+        implementation("io.arrow-kt:arrow-core:$arrowVersion")
+        implementation("io.arrow-kt:arrow-optics:$arrowVersion")
+        implementation("io.arrow-kt:arrow-fx-coroutines:$arrowVersion")
+        implementation("io.arrow-kt:arrow-optics:$arrowVersion")
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
       }
     }
 
+    val kotestVersion = "5.5.4"
+    val kotestArrowVersion = "1.3.0"
     commonTest {
       dependencies {
-        implementation("io.kotest:kotest-property:5.3.0")
-        implementation("io.kotest:kotest-framework-engine:5.3.0")
-        implementation("io.kotest:kotest-assertions-core:5.3.0")
-        implementation("io.kotest.extensions:kotest-assertions-arrow:1.2.5")
-        implementation("io.kotest.extensions:kotest-property-arrow:1.2.5") // optional
-        implementation("io.kotest.extensions:kotest-property-arrow-optics:1.2.5") // optional
+        implementation("io.kotest:kotest-property:$kotestVersion")
+        implementation("io.kotest:kotest-framework-engine:$kotestVersion")
+        implementation("io.kotest:kotest-assertions-core:$kotestVersion")
+        implementation("io.kotest.extensions:kotest-assertions-arrow:$kotestArrowVersion")
+        implementation("io.kotest.extensions:kotest-property-arrow:$kotestArrowVersion") // optional
+        implementation("io.kotest.extensions:kotest-property-arrow-optics:$kotestArrowVersion") // optional
       }
     }
 
@@ -67,5 +78,7 @@ kotlin {
         implementation("io.kotest:kotest-runner-junit5-jvm:5.3.0")
       }
     }
+
+    val jvmMain by getting
   }
 }
