@@ -15,7 +15,7 @@ repositories {
 }
 
 // release candidate avoids a null pointer exception during optics generation
-val arrowVersion = "1.1.4-rc.3"
+val arrowVersion = "1.2.0-RC"
 dependencies {
   add("kspCommonMainMetadata", "io.arrow-kt:arrow-optics-ksp-plugin:$arrowVersion")
 }
@@ -28,7 +28,7 @@ kotlin {
     nodejs()
   }
 
-  // linuxX64()
+  linuxX64()
 
   mingwX64()
 
