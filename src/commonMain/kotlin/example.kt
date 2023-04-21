@@ -3,7 +3,7 @@
 import arrow.core.Either
 import arrow.core.Either.Left
 import arrow.core.Either.Right
-import arrow.core.continuations.either
+import arrow.core.raise.either
 import arrow.optics.optics
 
 object Lettuce
