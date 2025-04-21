@@ -1,7 +1,7 @@
 plugins {
-  kotlin("multiplatform") version "1.8.20" apply true
-  id("io.kotest.multiplatform") version "5.5.4" apply true
-  id("com.google.devtools.ksp") version "1.8.20-1.0.11"
+  kotlin("multiplatform") version "2.1.20" apply true
+  id("io.kotest.multiplatform") version "6.0.0-LOCAL" apply true
+  id("com.google.devtools.ksp") version "2.1.20-2.0.0"
 }
 
 group "org.example"
@@ -15,7 +15,7 @@ repositories {
 }
 
 // release candidate avoids a null pointer exception during optics generation
-val arrowVersion = "1.2.0-RC"
+val arrowVersion = "2.1.0"
 dependencies {
   add("kspCommonMainMetadata", "io.arrow-kt:arrow-optics-ksp-plugin:$arrowVersion")
 }
@@ -61,7 +61,7 @@ kotlin {
     }
 
     val kotestVersion = "5.5.4"
-    val kotestArrowVersion = "1.3.0"
+    val kotestArrowVersion = "2.0.0"
     commonTest {
       dependencies {
         implementation("io.kotest:kotest-property:$kotestVersion")
