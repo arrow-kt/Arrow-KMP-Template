@@ -10,10 +10,18 @@ object Lettuce
 object Knife
 object Salad
 
+@optics
+data class Ingredient(val name: String) {
+  companion object
+}
+
+@optics
 sealed class CookingException {
-  object LettuceIsRotten : CookingException()
-  object KnifeNeedsSharpening : CookingException()
+  data object LettuceIsRotten : CookingException()
+  data object KnifeNeedsSharpening : CookingException()
   data class InsufficientAmount(val quantityInGrams: Int) : CookingException()
+
+  companion object
 }
 
 typealias NastyLettuce = CookingException.LettuceIsRotten
@@ -36,8 +44,3 @@ suspend fun prepareLunch(): Either<CookingException, Salad> =
     val lunch = prepare(knife, lettuce).bind()
     lunch
   }
-
-@optics
-data class Ingredient(val name: String) {
-  companion object
-}
