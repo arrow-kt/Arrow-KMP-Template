@@ -1,12 +1,12 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
+import arrow.optics.plugin.arrowOpticsCommon
 
 plugins {
   alias(libs.plugins.kotlin.multiplatform)
-  alias(libs.plugins.ksp)
+  alias(libs.plugins.arrow.optics)
 }
 
-group "org.example"
-version "1.0"
+group = "org.example"
+version = "1.0"
 
 repositories {
   mavenCentral()
@@ -33,7 +33,6 @@ kotlin {
   sourceSets {
     commonMain {
       dependencies {
-        kotlin.srcDir("build/generated/ksp/metadata/commonMain/kotlin")
         implementation(libs.coroutines.core)
         implementation(libs.arrow.core)
         implementation(libs.arrow.fxCoroutines)
@@ -51,14 +50,6 @@ kotlin {
 
     val jvmMain by getting
   }
-}
 
-dependencies {
-  add("kspCommonMainMetadata", libs.arrow.optics.ksp)
-}
-
-project.tasks.withType(KotlinCompilationTask::class.java).configureEach {
-  if(name != "kspCommonMainKotlinMetadata") {
-    dependsOn("kspCommonMainKotlinMetadata")
-  }
+  arrowOpticsCommon()
 }

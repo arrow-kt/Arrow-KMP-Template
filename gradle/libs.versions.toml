@@ -1,16 +1,14 @@
 [versions]
-arrow = "2.1.0"
+arrow = "2.2.0"
 coroutines = "1.10.2"
-kotlin = "2.1.20"
-kotest = "6.0.0.M3"
-ksp = "2.1.20-2.0.0"
+kotlin = "2.2.21"
+kotest = "6.0.4"
 
 [libraries]
 arrow-core = { module = "io.arrow-kt:arrow-core", version.ref = "arrow" }
 arrow-fxCoroutines = { module = "io.arrow-kt:arrow-fx-coroutines", version.ref = "arrow" }
 arrow-resilience = { module = "io.arrow-kt:arrow-resilience", version.ref = "arrow" }
 arrow-optics = { module = "io.arrow-kt:arrow-optics", version.ref = "arrow" }
-arrow-optics-ksp = { module = "io.arrow-kt:arrow-optics-ksp-plugin", version.ref = "arrow" }
 coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
 coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
 kotest-assertions-core = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
@@ -23,4 +21,4 @@ testing = [ "coroutines-test", "kotest-assertions-core", "kotest-assertions-arro
 
 [plugins]
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+arrow-optics = { id = "io.arrow-kt.optics", version.ref = "arrow" }
